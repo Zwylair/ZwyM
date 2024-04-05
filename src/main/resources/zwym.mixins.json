@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "zwylair.zwym.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "LightningRodMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

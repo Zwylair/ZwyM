@@ -1,0 +1,7 @@
+{
+  "itemGroup.zwym.main_item_group": "ZwyM",
+  "block.zwym.electrified_copper_block": "Electrified Copper Block",
+  "death.attack.electricity": "%s was electrocuted",
+  "death.attack.electricity.item": "%s was electrocuted by %s using %s",
+  "death.attack.electricity.player": "%s was electrocuted whilst trying to escape %s"
+}

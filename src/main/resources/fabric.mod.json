@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "zwym",
+  "version": "${version}",
+
+  "name": "ZwyM",
+  "description": "Adds a few random items that are not related to each other",
+  "authors": [
+    "Zwylair"
+  ],
+  "contact": {
+    "sources": "https://github.com/Zwylair/ZwyM"
+  },
+
+  "license": "MIT",
+  "icon": "assets/zwym/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "zwylair.zwym.ZwyM"
+      }
+    ]
+  },
+  "depends": {
+    "minecraft": "~${minecraft_version}",
+    "java": ">=17",
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}"
+  },
+  "mixins": [
+    "zwym.mixins.json"
+  ]
+}
