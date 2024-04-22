@@ -2,16 +2,23 @@ package zwylair.zwym.utils
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
-import net.minecraft.item.Item
+import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
+import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
+import net.minecraft.entity.EntityDimensions
+import net.minecraft.entity.EntityType
+import net.minecraft.entity.SpawnGroup
+import net.minecraft.entity.mob.MobEntity
+import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-
+import net.minecraft.util.Identifier
+import net.minecraft.world.World
 import zwylair.zwym.ModObject.ModBlockItem
 import zwylair.zwym.ModObject.ModItem
 import zwylair.zwym.ModObject.ModBlock
-import zwylair.zwym.ModObject.GlintedItem
 import zwylair.zwym.ModObject.GlintedBlockItem
 import zwylair.zwym.ZwyM
+import zwylair.zwym.entities.CubeEntity
 
 object Utils {
     private fun addToGroup(item: ModItem) {
@@ -39,15 +46,20 @@ object Utils {
         if (block.itemGroupAddTo != null) addToGroup(blockItem)
     }
 
-    private fun extractItemSettings(item: Item): Item.Settings {
-        val settings = FabricItemSettings()
-            .maxCount(item.maxCount)
-            .food(item.foodComponent)
-            .maxDamage(item.maxDamage)
-            .rarity(item.getRarity(item.defaultStack))
-            .recipeRemainder(item.recipeRemainder)
-        if (item.isFireproof) settings.fireproof()
-
-        return settings
+    fun register(itemGroup: ItemGroup, id: Identifier) {
+        Registry.register(Registries.ITEM_GROUP, id, itemGroup)
+        ZwyM.LOGGER.info("{} ItemGroup registered", id.toTranslationKey().toString())
     }
+
+//    private fun extractItemSettings(item: Item): Item.Settings {
+//        val settings = FabricItemSettings()
+//            .maxCount(item.maxCount)
+//            .food(item.foodComponent)
+//            .maxDamage(item.maxDamage)
+//            .rarity(item.getRarity(item.defaultStack))
+//            .recipeRemainder(item.recipeRemainder)
+//        if (item.isFireproof) settings.fireproof()
+//
+//        return settings
+//    }
 }

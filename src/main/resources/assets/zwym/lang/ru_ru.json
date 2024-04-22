@@ -4,5 +4,6 @@
   "death.attack.electricity": "%s зарядился на тот свет",
   "death.attack.electricity.item": "%s был начинен током %s используя %s",
   "death.attack.electricity.player": "%s стал попутал полюса из-за %s",
-  "item.zwym.storm_scroll": "Свиток грозы"
+  "item.zwym.storm_scroll": "Свиток грозы",
+  "item.zwym.electric_shield_scroll": "Свиток, блять"
 }

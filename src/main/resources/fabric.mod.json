@@ -22,6 +22,9 @@
         "adapter": "kotlin",
         "value": "zwylair.zwym.ZwyM"
       }
+    ],
+    "client": [
+      "zwylair.zwym.EntityTestingClient"
     ]
   },
   "depends": {

@@ -30,6 +30,8 @@ class ElectrifiedCopperBlock : ModBlock(
     override fun onUse(
         state: BlockState?, world: World, pos: BlockPos?, player: PlayerEntity, hand: Hand?, hit: BlockHitResult?
     ): ActionResult {
+        super.onUse(state, world, pos, player, hand, hit)
+
         if (world.isClient) return ActionResult.FAIL
         if (player.getStackInHand(hand).isEmpty) {
             player.damage(DamageTypes.of(world, DamageTypes.ElectricityDamageType), 6f)

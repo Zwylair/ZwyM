@@ -1,4 +1,4 @@
-rootProject.name = "RandomItemBattle"
+rootProject.name = "ZwyM"
 pluginManagement {
     repositories {
         maven("https://maven.fabricmc.net/") {

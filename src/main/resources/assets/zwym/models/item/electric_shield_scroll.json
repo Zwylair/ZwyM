@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "zwym:item/scroll",
+    "layer1": "zwym:item/electric_shield_scroll_overlay"
+  }
+}
