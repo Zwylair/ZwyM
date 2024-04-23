@@ -69,27 +69,6 @@ object ModObject {
         }
     }
 
-    open class ModPathAwareEntity(entityType: EntityType<out PathAwareEntity?>?, world: World?) : PathAwareEntity(entityType, world) {
-        open lateinit var id: Identifier
-        open var itemGroupAddTo: RegistryKey<ItemGroup>? = null
-        open var glinted: Boolean = false
-
-        fun id(id: Identifier): ModPathAwareEntity {
-            this.id = id
-            return this
-        }
-
-        fun itemGroupAddTo(itemGroup: RegistryKey<ItemGroup>): ModPathAwareEntity {
-            this.itemGroupAddTo = itemGroup
-            return this
-        }
-
-        fun glinted(state: Boolean): ModPathAwareEntity {
-            this.glinted = state
-            return this
-        }
-    }
-
     open class GlintedItem(settings: Settings) : ModItem(settings) {
         override fun hasGlint(stack: ItemStack?): Boolean { return true }
     }

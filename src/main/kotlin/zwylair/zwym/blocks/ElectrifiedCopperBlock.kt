@@ -1,7 +1,6 @@
 package zwylair.zwym.blocks
 
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
-
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.entity.player.PlayerEntity
@@ -13,11 +12,9 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import zwylair.zwym.ModObject.ModBlock
-
 import zwylair.zwym.ZwyM
 import zwylair.zwym.damagetypes.DamageTypes
 import zwylair.zwym.itemgroups.ItemGroups
-
 
 class ElectrifiedCopperBlock : ModBlock(
     FabricBlockSettings.copy(Blocks.COPPER_BLOCK)

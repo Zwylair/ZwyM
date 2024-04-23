@@ -8,11 +8,9 @@ import net.minecraft.registry.RegistryKey
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
-
 import zwylair.zwym.ModObject.ModItem
 import zwylair.zwym.ZwyM
 import zwylair.zwym.itemgroups.ItemGroups
-
 
 class StormScroll : ModItem(FabricItemSettings().maxCount(8)) {
     override var id = ZwyM.id("storm_scroll")

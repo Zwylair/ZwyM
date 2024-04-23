@@ -5,7 +5,6 @@ import net.minecraft.entity.damage.DamageType
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.world.World
-
 import zwylair.zwym.ZwyM
 
 object DamageTypes {

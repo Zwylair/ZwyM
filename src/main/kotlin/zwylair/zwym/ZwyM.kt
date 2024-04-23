@@ -19,7 +19,6 @@ import zwylair.zwym.itemgroups.ItemGroups
 import zwylair.zwym.items.ModItems
 import zwylair.zwym.utils.Utils.register
 
-
 class ZwyM : ModInitializer {
     companion object {
         const val MODID = "zwym"

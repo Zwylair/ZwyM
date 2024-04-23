@@ -14,7 +14,6 @@ import zwylair.zwym.entities.CubeEntity
 import zwylair.zwym.entities.ModEntities
 import zwylair.zwym.itemgroups.ItemGroups
 
-
 class ElectricShieldScroll : ModItem(FabricItemSettings().maxCount(8)) {
     override var id = ZwyM.id("electric_shield_scroll")
     override var itemGroupAddTo: RegistryKey<ItemGroup>? = ItemGroups.mainItemGroupRegKey
