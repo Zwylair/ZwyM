@@ -1,15 +1,10 @@
 package zwylair.zwym
 
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
-import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
 import net.minecraft.block.BlockState
-import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.SpawnGroup
+import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.ItemGroup
-import net.minecraft.registry.Registries
-import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
@@ -17,7 +12,8 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import zwylair.zwym.blocks.ModBlocks
 import zwylair.zwym.customevents.LightningRodCallback
-import zwylair.zwym.entities.CubeEntity
+import zwylair.zwym.entities.ModEntities
+import zwylair.zwym.entities.ModEntities.EntityTypeToAttributes
 import zwylair.zwym.events.copperBlockToElectrifiedCopperBlock
 import zwylair.zwym.itemgroups.ItemGroups
 import zwylair.zwym.items.ModItems
@@ -35,17 +31,7 @@ class ZwyM : ModInitializer {
             ModBlocks.ElectrifiedCopperBlock,
             ModItems.StormScrollItem,
             ModItems.ElectricShieldScrollItem,
-        )
-        @JvmField
-        val CUBE: EntityType<CubeEntity> = Registry.register(
-            Registries.ENTITY_TYPE,
-            Identifier("zwym", "cube"),
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE) {
-                entityType: EntityType<CubeEntity>, world: World ->
-                CubeEntity(entityType, world)
-            }
-                .dimensions(EntityDimensions.fixed(0.75f, 0.75f))
-                .build()
+            ModEntities.CubeEntityType,
         )
     }
 
@@ -67,11 +53,13 @@ class ZwyM : ModInitializer {
                     LOGGER.info("Trying to register {}", ItemGroups.itemGroupsIds[it]!!.toTranslationKey())
                     register(it, ItemGroups.itemGroupsIds[it]!!)
                 }
+                is EntityType<*> -> {  // it is EntityType<MobEntity> 100%
+                    LOGGER.info("Trying to register {}", it.translationKey)
+                    register(it as EntityType<MobEntity>, EntityTypeToAttributes[it]!!)
+                }
             }
         }
         LightningRodCallback.EVENT.register { state: BlockState, world: World, pos: BlockPos -> copperBlockToElectrifiedCopperBlock(state, world, pos) }
-
-        FabricDefaultAttributeRegistry.register(CUBE, CubeEntity.createMobAttributes());
 
         LOGGER.info("")
         LOGGER.info("ZwyM has been initialized!")

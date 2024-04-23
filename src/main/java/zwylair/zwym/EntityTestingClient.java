@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 import zwylair.zwym.entities.CubeEntityModel;
 import zwylair.zwym.entities.CubeEntityRenderer;
-import static zwylair.zwym.ZwyM.CUBE;
+import zwylair.zwym.entities.ModEntities;
 
 
 @Environment(EnvType.CLIENT)
@@ -23,7 +23,7 @@ public class EntityTestingClient implements ClientModInitializer {
          *
          * Entity Renderers can also manipulate the model before it renders based on entity context (EndermanEntityRenderer#render).
          */
-        EntityRendererRegistry.INSTANCE.register(CUBE, CubeEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(ModEntities.CubeEntityType, CubeEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, CubeEntityModel::getTexturedModelData);
     }
 }

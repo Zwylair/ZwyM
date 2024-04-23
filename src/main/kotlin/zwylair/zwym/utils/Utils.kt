@@ -3,22 +3,18 @@ package zwylair.zwym.utils
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
-import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
-import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.SpawnGroup
+import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
-import net.minecraft.world.World
 import zwylair.zwym.ModObject.ModBlockItem
 import zwylair.zwym.ModObject.ModItem
 import zwylair.zwym.ModObject.ModBlock
 import zwylair.zwym.ModObject.GlintedBlockItem
 import zwylair.zwym.ZwyM
-import zwylair.zwym.entities.CubeEntity
 
 object Utils {
     private fun addToGroup(item: ModItem) {
@@ -49,6 +45,11 @@ object Utils {
     fun register(itemGroup: ItemGroup, id: Identifier) {
         Registry.register(Registries.ITEM_GROUP, id, itemGroup)
         ZwyM.LOGGER.info("{} ItemGroup registered", id.toTranslationKey().toString())
+    }
+
+    fun register(entityType: EntityType<MobEntity>, entityAttributes: DefaultAttributeContainer.Builder) {
+        FabricDefaultAttributeRegistry.register(entityType, entityAttributes)
+        ZwyM.LOGGER.info("{} entity registered", entityType.translationKey.toString())
     }
 
 //    private fun extractItemSettings(item: Item): Item.Settings {
