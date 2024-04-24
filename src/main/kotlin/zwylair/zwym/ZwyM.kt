@@ -17,6 +17,8 @@ import zwylair.zwym.entities.ModEntities.EntityTypeToAttributes
 import zwylair.zwym.events.copperBlockToElectrifiedCopperBlock
 import zwylair.zwym.itemgroups.ItemGroups
 import zwylair.zwym.items.ModItems
+import zwylair.zwym.soundevents.ModSoundEvent
+import zwylair.zwym.soundevents.ModSoundEvents
 import zwylair.zwym.utils.Utils.register
 
 class ZwyM : ModInitializer {
@@ -31,6 +33,7 @@ class ZwyM : ModInitializer {
             ModItems.StormScrollItem,
             ModItems.ElectricShieldScrollItem,
             ModEntities.CubeEntityType,
+            ModSoundEvents.NoSoundModObject,
         )
     }
 
@@ -55,6 +58,10 @@ class ZwyM : ModInitializer {
                 is EntityType<*> -> {  // it is EntityType<MobEntity> 100%
                     LOGGER.info("Trying to register {}", it.translationKey)
                     register(it as EntityType<MobEntity>, EntityTypeToAttributes[it]!!)
+                }
+                is ModSoundEvent -> {  // it is EntityType<MobEntity> 100%
+                    LOGGER.info("Trying to register {}", it.id.toTranslationKey())
+                    register(it)
                 }
             }
         }

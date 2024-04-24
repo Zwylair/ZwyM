@@ -9,12 +9,14 @@ import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.sound.SoundEvent
 import net.minecraft.util.Identifier
 import zwylair.zwym.ModObject.ModBlockItem
 import zwylair.zwym.ModObject.ModItem
 import zwylair.zwym.ModObject.ModBlock
 import zwylair.zwym.ModObject.GlintedBlockItem
 import zwylair.zwym.ZwyM
+import zwylair.zwym.soundevents.ModSoundEvent
 
 object Utils {
     private fun addToGroup(item: ModItem) {
@@ -44,12 +46,17 @@ object Utils {
 
     fun register(itemGroup: ItemGroup, id: Identifier) {
         Registry.register(Registries.ITEM_GROUP, id, itemGroup)
-        ZwyM.LOGGER.info("{} ItemGroup registered", id.toTranslationKey().toString())
+        ZwyM.LOGGER.info("{} ItemGroup registered", id.toTranslationKey())
     }
 
     fun register(entityType: EntityType<MobEntity>, entityAttributes: DefaultAttributeContainer.Builder) {
         FabricDefaultAttributeRegistry.register(entityType, entityAttributes)
-        ZwyM.LOGGER.info("{} entity registered", entityType.translationKey.toString())
+        ZwyM.LOGGER.info("{} entity registered", entityType.translationKey)
+    }
+
+    fun register(modSoundEvent: ModSoundEvent) {
+        Registry.register(Registries.SOUND_EVENT, modSoundEvent.id, SoundEvent.of(modSoundEvent.id))
+        ZwyM.LOGGER.info("{} sound registered", modSoundEvent.id.toTranslationKey())
     }
 
 //    private fun extractItemSettings(item: Item): Item.Settings {
