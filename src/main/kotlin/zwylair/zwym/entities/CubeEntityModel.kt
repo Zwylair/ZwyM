@@ -44,11 +44,11 @@ class CubeEntityModel(modelPart: ModelPart) : EntityModel<CubeEntity?>() {
                 val modelPartData = modelData.root
                 modelPartData.addChild(
                     EntityModelPartNames.CUBE,
-                    ModelPartBuilder.create().uv(0, 0).cuboid(-6f, 12f, -6f, 12f, 12f, 12f),
+                    ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, 4.0F, -4.0F, 8.0F, 8.0F, 8.0F),
                     ModelTransform.pivot(0f, 0f, 0f)
                 )
 
-                return TexturedModelData.of(modelData, 64, 64)
+                return TexturedModelData.of(modelData, 32, 32)
             }
     }
 }

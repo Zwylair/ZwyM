@@ -24,7 +24,7 @@ class ElectricShieldScroll : ModItem(FabricItemSettings().maxCount(8)) {
 
         val entity = CubeEntity(ModEntities.CubeEntityType, world)
         entity.setOwner(player)
-        entity.setPosition(player.x + 0.5, player.y, player.z + 0.5)
+        entity.setPosition(player.x + 1, player.y, player.z + 1)
         world.spawnEntity(entity)
         itemStack.decrement(1)
 

@@ -12,7 +12,7 @@ class CubeEntityRenderer(context: EntityRendererFactory.Context) :
     MobEntityRenderer<CubeEntity?, CubeEntityModel?>(
         context,
         CubeEntityModel(context.getPart(ZwyMClient.MODEL_CUBE_LAYER)),
-        0.5f
+        0.3f
     ) {
     override fun getTexture(entity: CubeEntity?): Identifier {
         return Identifier("zwym", "textures/entity/cube/cube.png")
