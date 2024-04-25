@@ -15,6 +15,10 @@ import zwylair.zwym.customevents.LightningRodCallback
 import zwylair.zwym.entities.ModEntities
 import zwylair.zwym.entities.ModEntities.EntityTypeToAttributes
 import zwylair.zwym.events.copperBlockToElectrifiedCopperBlock
+import zwylair.zwym.init.ZwyMModBlockEntities
+import zwylair.zwym.init.ZwyMModBlocks
+import zwylair.zwym.init.ZwyMModItems
+import zwylair.zwym.init.ZwyMModMenus
 import zwylair.zwym.itemgroups.ItemGroups
 import zwylair.zwym.items.ModItems
 import zwylair.zwym.soundevents.ModSoundEvent
@@ -70,5 +74,13 @@ class ZwyM : ModInitializer {
         LOGGER.info("")
         LOGGER.info("ZwyM has been initialized!")
         LOGGER.info("")
+
+        LOGGER.info("Initializing new ZwyM...")
+
+        ZwyMModBlocks.load()
+        ZwyMModItems.load()
+        ZwyMModBlockEntities.load()
+        ZwyMModMenus.load()
     }
 }
+

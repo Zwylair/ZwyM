@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "zwym:block/example_block" }
+  }
+}

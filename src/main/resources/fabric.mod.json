@@ -21,12 +21,10 @@
       {
         "adapter": "kotlin",
         "value": "zwylair.zwym.ZwyM"
-      },
-      "zwylair.zwym.UgyfMod"
+      }
     ],
     "client": [
-      "zwylair.zwym.ZwyMClient",
-      "zwylair.zwym.ClientInit"
+      "zwylair.zwym.ZwyMClient"
     ]
   },
   "depends": {

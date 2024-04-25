@@ -11,6 +11,8 @@ import net.minecraft.util.Identifier
 import zwylair.zwym.entities.CubeEntityModel
 import zwylair.zwym.entities.CubeEntityRenderer
 import zwylair.zwym.entities.ModEntities
+import zwylair.zwym.init.ZwyMModBlocks
+import zwylair.zwym.init.ZwyMModScreens
 
 @Environment(EnvType.CLIENT)
 class ZwyMClient : ClientModInitializer {
@@ -24,6 +26,9 @@ class ZwyMClient : ClientModInitializer {
         ) { context: EntityRendererFactory.Context? -> CubeEntityRenderer(context!!) }
 
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, CubeEntityModel::texturedModelData)
+
+        ZwyMModBlocks.clientLoad()
+        ZwyMModScreens.load()
     }
 
     companion object {
