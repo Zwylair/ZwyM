@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "ugyf:block/example_block",
+    "up": "ugyf:block/example_block",
+    "north": "ugyf:block/example_block",
+    "east": "ugyf:block/example_block",
+    "south": "ugyf:block/example_block",
+    "west": "ugyf:block/example_block",
+    "particle": "ugyf:block/example_block"
+  },
+  "render_type": "solid"
+}
