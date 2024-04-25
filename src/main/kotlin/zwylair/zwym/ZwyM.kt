@@ -1,29 +1,20 @@
 package zwylair.zwym
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import net.fabricmc.api.ModInitializer
 import net.minecraft.block.BlockState
-import net.minecraft.entity.EntityType
-import net.minecraft.entity.mob.MobEntity
-import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import zwylair.zwym.blocks.ModBlocks
+import zwylair.zwym.blocks.entities.ModBlockEntities
 import zwylair.zwym.customevents.LightningRodCallback
 import zwylair.zwym.entities.ModEntities
-import zwylair.zwym.entities.ModEntities.EntityTypeToAttributes
 import zwylair.zwym.events.copperBlockToElectrifiedCopperBlock
-import zwylair.zwym.init.ZwyMModBlockEntities
-import zwylair.zwym.init.ZwyMModBlocks
-import zwylair.zwym.init.ZwyMModItems
-import zwylair.zwym.init.ZwyMModMenus
-import zwylair.zwym.itemgroups.ItemGroups
+import zwylair.zwym.itemgroups.ModItemGroups
 import zwylair.zwym.items.ModItems
-import zwylair.zwym.soundevents.ModSoundEvent
 import zwylair.zwym.soundevents.ModSoundEvents
-import zwylair.zwym.utils.Utils.register
 
 class ZwyM : ModInitializer {
     companion object {
@@ -31,56 +22,22 @@ class ZwyM : ModInitializer {
         @JvmField
         val LOGGER: Logger = LoggerFactory.getLogger(MODID)
         fun id(path: String) = Identifier(MODID, path)
-        val registryQueue: List<Any> = listOf(
-            ItemGroups.mainItemGroup,
-            ModBlocks.ElectrifiedCopperBlock,
-            ModItems.StormScrollItem,
-            ModItems.ElectricShieldScrollItem,
-            ModEntities.CubeEntityType,
-            ModSoundEvents.NoSoundModObject,
-        )
     }
 
     override fun onInitialize() {
         LOGGER.info("ZwyM has started initialization...")
 
-        registryQueue.forEach {
-            LOGGER.info("")
-            when (it) {
-                is ModObject.ModBlock -> {
-                    LOGGER.info("Trying to register {}", it.id)
-                    register(it)
-                }
-                is ModObject.ModItem -> {
-                    LOGGER.info("Trying to register {}", it.id)
-                    register(it)
-                }
-                is ItemGroup -> {
-                    LOGGER.info("Trying to register {}", ItemGroups.itemGroupsIds[it]!!.toTranslationKey())
-                    register(it, ItemGroups.itemGroupsIds[it]!!)
-                }
-                is EntityType<*> -> {  // it is EntityType<MobEntity> 100%
-                    LOGGER.info("Trying to register {}", it.translationKey)
-                    register(it as EntityType<MobEntity>, EntityTypeToAttributes[it]!!)
-                }
-                is ModSoundEvent -> {  // it is EntityType<MobEntity> 100%
-                    LOGGER.info("Trying to register {}", it.id.toTranslationKey())
-                    register(it)
-                }
-            }
-        }
+        ModItemGroups.init()
+        ModBlocks.init()
+        ModItems.init()
+        ModBlockEntities.init()
+        ModEntities.init()
+        ModSoundEvents.init()
+
         LightningRodCallback.EVENT.register { state: BlockState, world: World, pos: BlockPos -> copperBlockToElectrifiedCopperBlock(state, world, pos) }
 
         LOGGER.info("")
         LOGGER.info("ZwyM has been initialized!")
         LOGGER.info("")
-
-        LOGGER.info("Initializing new ZwyM...")
-
-        ZwyMModBlocks.load()
-        ZwyMModItems.load()
-        ZwyMModBlockEntities.load()
-        ZwyMModMenus.load()
     }
 }
-

@@ -12,11 +12,11 @@ import zwylair.zwym.ZwyM
 import zwylair.zwym.ModObject.ModItem
 import zwylair.zwym.entities.CubeEntity
 import zwylair.zwym.entities.ModEntities
-import zwylair.zwym.itemgroups.ItemGroups
+import zwylair.zwym.itemgroups.ModItemGroups
 
 class ElectricShieldScroll : ModItem(FabricItemSettings().maxCount(8)) {
     override var id = ZwyM.id("electric_shield_scroll")
-    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ItemGroups.mainItemGroupRegKey
+    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ModItemGroups.ZWYM_ITEMGROUP_REG_KEY
 
     override fun use(world: World?, player: PlayerEntity?, hand: Hand?): TypedActionResult<ItemStack> {
         val itemStack = player!!.getStackInHand(hand)

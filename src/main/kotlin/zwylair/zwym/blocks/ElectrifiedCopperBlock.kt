@@ -13,15 +13,15 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import zwylair.zwym.ModObject.ModBlock
 import zwylair.zwym.ZwyM
-import zwylair.zwym.damagetypes.DamageTypes
-import zwylair.zwym.itemgroups.ItemGroups
+import zwylair.zwym.damagetypes.ModDamageTypes
+import zwylair.zwym.itemgroups.ModItemGroups
 
 class ElectrifiedCopperBlock : ModBlock(
     FabricBlockSettings.copy(Blocks.COPPER_BLOCK)
         .luminance { 7 }
 ) {
     override var id = ZwyM.id("electrified_copper_block")
-    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ItemGroups.mainItemGroupRegKey
+    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ModItemGroups.ZWYM_ITEMGROUP_REG_KEY
 
     @Deprecated("Deprecated in Java")
     override fun onUse(
@@ -31,7 +31,7 @@ class ElectrifiedCopperBlock : ModBlock(
 
         if (world.isClient) return ActionResult.FAIL
         if (player.getStackInHand(hand).isEmpty) {
-            player.damage(DamageTypes.of(world, DamageTypes.ElectricityDamageType), 6f)
+            player.damage(ModDamageTypes.of(world, ModDamageTypes.ELECTRICITY_DAMAGE_TYPE), 6f)
             return ActionResult.SUCCESS
         }
         return ActionResult.FAIL

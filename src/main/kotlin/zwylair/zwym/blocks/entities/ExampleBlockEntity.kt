@@ -16,12 +16,11 @@ import net.minecraft.text.Text
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import zwylair.zwym.init.ZwyMModBlockEntities
 import zwylair.zwym.world.inventory.EnchantSplitterGuiMenu
 import java.util.stream.IntStream
 
-class ExampleBlockBlockEntity(position: BlockPos?, state: BlockState?) :
-    LootableContainerBlockEntity(ZwyMModBlockEntities.EXAMPLE_BLOCK, position, state), ExtendedScreenHandlerFactory,
+class ExampleBlockEntity(position: BlockPos?, state: BlockState?) :
+    LootableContainerBlockEntity(ModBlockEntities.EXAMPLE_BLOCK, position, state), ExtendedScreenHandlerFactory,
     SidedInventory {
     private var stacks: DefaultedList<ItemStack> = DefaultedList.ofSize(3, ItemStack.EMPTY)
 

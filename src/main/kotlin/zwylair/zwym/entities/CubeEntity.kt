@@ -11,7 +11,6 @@ import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.sound.SoundEvent
 import net.minecraft.world.World
 import zwylair.zwym.soundevents.ModSoundEvents
-import zwylair.zwym.ZwyM
 
 class CubeEntity(type: EntityType<out MobEntity?>?, world: World?) : MobEntity(type, world) {
     private var owner: PlayerEntity? = null

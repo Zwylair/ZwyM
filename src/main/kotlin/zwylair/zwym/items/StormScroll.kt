@@ -10,11 +10,11 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 import zwylair.zwym.ModObject.ModItem
 import zwylair.zwym.ZwyM
-import zwylair.zwym.itemgroups.ItemGroups
+import zwylair.zwym.itemgroups.ModItemGroups
 
 class StormScroll : ModItem(FabricItemSettings().maxCount(8)) {
     override var id = ZwyM.id("storm_scroll")
-    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ItemGroups.mainItemGroupRegKey
+    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ModItemGroups.ZWYM_ITEMGROUP_REG_KEY
 
     override fun use(world: World?, player: PlayerEntity?, hand: Hand?): TypedActionResult<ItemStack> {
         val itemStack = player!!.getStackInHand(hand)

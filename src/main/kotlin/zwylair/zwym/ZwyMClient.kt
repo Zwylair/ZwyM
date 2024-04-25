@@ -7,12 +7,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.minecraft.client.render.entity.EntityRendererFactory
 import net.minecraft.client.render.entity.model.EntityModelLayer
-import net.minecraft.util.Identifier
+import zwylair.zwym.client.gui.ModScreens
 import zwylair.zwym.entities.CubeEntityModel
 import zwylair.zwym.entities.CubeEntityRenderer
 import zwylair.zwym.entities.ModEntities
-import zwylair.zwym.init.ZwyMModBlocks
-import zwylair.zwym.init.ZwyMModScreens
 
 @Environment(EnvType.CLIENT)
 class ZwyMClient : ClientModInitializer {
@@ -22,16 +20,15 @@ class ZwyMClient : ClientModInitializer {
          *
          * Entity Renderers can also manipulate the model before it renders based on entity context (EndermanEntityRenderer#render).
          */
-        EntityRendererRegistry.register(ModEntities.CubeEntityType
+        EntityRendererRegistry.register(
+            ModEntities.CubeEntityType
         ) { context: EntityRendererFactory.Context? -> CubeEntityRenderer(context!!) }
-
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, CubeEntityModel::texturedModelData)
 
-        ZwyMModBlocks.clientLoad()
-        ZwyMModScreens.load()
+        ModScreens.init()
     }
 
     companion object {
-        val MODEL_CUBE_LAYER: EntityModelLayer = EntityModelLayer(Identifier("zwym", "cube"), "main")
+        val MODEL_CUBE_LAYER: EntityModelLayer = EntityModelLayer(ZwyM.id("cube"), "main")
     }
 }

@@ -10,10 +10,10 @@ import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import zwylair.zwym.init.ZwyMModMenus
+import zwylair.zwym.client.gui.ModScreens
 
 class EnchantSplitterGuiMenu(id: Int, inv: PlayerInventory, private val inventory: Inventory) :
-    ScreenHandler(ZwyMModMenus.ENCHANT_SPLITTER_GUI, id) {
+    ScreenHandler(ModScreens.ENCHANT_SPLITTER_GUI, id) {
     val world: World = inv.player.world
 
     val entity: PlayerEntity = inv.player

@@ -7,8 +7,8 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.world.World
 import zwylair.zwym.ZwyM
 
-object DamageTypes {
-    val ElectricityDamageType: RegistryKey<DamageType> = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ZwyM.id("electricity"))
+object ModDamageTypes {
+    val ELECTRICITY_DAMAGE_TYPE: RegistryKey<DamageType> = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ZwyM.id("electricity"))
 
     fun of(world: World, key: RegistryKey<DamageType>?): DamageSource {
         return DamageSource(world.registryManager.get(RegistryKeys.DAMAGE_TYPE).entryOf(key))

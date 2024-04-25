@@ -1,19 +1,15 @@
 package zwylair.zwym.blocks
 
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.Environment
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
-import net.minecraft.block.Block
 import net.minecraft.block.BlockEntityProvider
 import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.block.enums.Instrument
-import net.minecraft.client.render.RenderLayer
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.loot.context.LootContextParameterSet
+import net.minecraft.registry.RegistryKey
 import net.minecraft.screen.NamedScreenHandlerFactory
-import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.ItemScatterer
@@ -21,11 +17,15 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
-import zwylair.zwym.blocks.entities.ExampleBlockBlockEntity
-import zwylair.zwym.init.ZwyMModBlocks
+import zwylair.zwym.ModObject.ModBlock
+import zwylair.zwym.ZwyM
+import zwylair.zwym.blocks.entities.ExampleBlockEntity
+import zwylair.zwym.itemgroups.ModItemGroups
 
-class ExampleBlockBlock : Block(PROPERTIES),
-    BlockEntityProvider {
+class ExampleBlock : ModBlock(Blocks.ENCHANTING_TABLE.settings), BlockEntityProvider {
+    override var id = ZwyM.id("example_block")
+    override var itemGroupAddTo: RegistryKey<ItemGroup>? = ModItemGroups.ZWYM_ITEMGROUP_REG_KEY
+
     override fun getOpacity(state: BlockState, worldIn: BlockView, pos: BlockPos): Int {
         return 15
     }
@@ -62,7 +62,7 @@ class ExampleBlockBlock : Block(PROPERTIES),
     }
 
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity? {
-        return ExampleBlockBlockEntity(pos, state)
+        return ExampleBlockEntity(pos, state)
     }
 
     override fun onSyncedBlockEvent(
@@ -86,21 +86,11 @@ class ExampleBlockBlock : Block(PROPERTIES),
     ) {
         if (state.block !== newState.block) {
             val blockEntity = world.getBlockEntity(pos)
-            if (blockEntity is ExampleBlockBlockEntity) {
+            if (blockEntity is ExampleBlockEntity) {
                 ItemScatterer.spawn(world, pos, blockEntity)
                 world.updateComparators(pos, this)
             }
             super.onStateReplaced(state, world, pos, newState, isMoving)
-        }
-    }
-
-    companion object {
-        var PROPERTIES: Settings =
-            Settings.create().instrument(Instrument.BASEDRUM).sounds(BlockSoundGroup.GRAVEL).strength(1f, 10f)
-
-        @Environment(EnvType.CLIENT)
-        fun clientInit() {
-            BlockRenderLayerMap.INSTANCE.putBlock(ZwyMModBlocks.EXAMPLE_BLOCK, RenderLayer.getSolid())
         }
     }
 }
