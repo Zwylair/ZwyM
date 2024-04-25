@@ -24,7 +24,6 @@ class EnchantSplitterGuiMenu(
     val entity: PlayerEntity = inv.player
     var x = 0
     var y = 0
-    var z = 0
 
     constructor(id: Int, inv: PlayerInventory, extraData: PacketByteBuf?) : this(id, inv, SimpleInventory(3)) {
         if (extraData == null) return
@@ -32,7 +31,6 @@ class EnchantSplitterGuiMenu(
         val pos = extraData.readBlockPos()
         x = pos.x
         y = pos.y
-        z = pos.z
     }
 
     init {

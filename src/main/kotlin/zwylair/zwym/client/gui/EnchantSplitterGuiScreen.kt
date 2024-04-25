@@ -6,29 +6,37 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text
-import net.minecraft.util.Identifier
 import net.minecraft.world.World
 import zwylair.zwym.ZwyM
 import zwylair.zwym.world.inventory.EnchantSplitterGuiMenu
 
-class EnchantSplitterGuiScreen(container: EnchantSplitterGuiMenu, inventory: PlayerInventory?, text: Text?) :
-    HandledScreen<EnchantSplitterGuiMenu?>(container, inventory, text) {
+class EnchantSplitterGuiScreen(
+    container: EnchantSplitterGuiMenu,
+    inventory: PlayerInventory?,
+    text: Text?
+) : HandledScreen<EnchantSplitterGuiMenu?>(
+    container,
+    inventory,
+    text
+) {
     private val world: World = container.world
     private val entity: PlayerEntity
 
     init {
-        this.x = container.x
-        this.y = container.y
-        this.entity = container.entity
-        this.backgroundWidth = 176
-        this.backgroundHeight = 166
+        x = container.x
+        y = container.y
+        entity = container.entity
+        backgroundWidth = 176
+        backgroundHeight = 166
     }
 
     override fun render(guiGraphics: DrawContext, mouseX: Int, mouseY: Int, partialTicks: Float) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks)
+        renderBackground(guiGraphics, mouseX, mouseY, partialTicks)
         super.render(guiGraphics, mouseX, mouseY, partialTicks)
-        this.drawMouseoverTooltip(guiGraphics, mouseX, mouseY)
+        drawMouseoverTooltip(guiGraphics, mouseX, mouseY)
     }
+
+    override fun drawForeground(guiGraphics: DrawContext, mouseX: Int, mouseY: Int) { }
 
     override fun drawBackground(guiGraphics: DrawContext, partialTicks: Float, gx: Int, gy: Int) {
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
@@ -36,12 +44,9 @@ class EnchantSplitterGuiScreen(container: EnchantSplitterGuiMenu, inventory: Pla
         RenderSystem.defaultBlendFunc()
         guiGraphics.drawTexture(
             texture,
-            this.x,
-            this.y, 0f, 0f,
-            this.backgroundWidth,
-            this.backgroundHeight,
-            this.backgroundWidth,
-            this.backgroundHeight
+            x, y, 0f, 0f,
+            backgroundWidth, backgroundHeight,
+            backgroundWidth, backgroundHeight
         )
         RenderSystem.disableBlend()
     }
@@ -54,23 +59,7 @@ class EnchantSplitterGuiScreen(container: EnchantSplitterGuiMenu, inventory: Pla
         return super.keyPressed(key, b, c)
     }
 
-    public override fun handledScreenTick() {
-        super.handledScreenTick()
-    }
-
-    override fun drawForeground(guiGraphics: DrawContext, mouseX: Int, mouseY: Int) {
-    }
-
-    override fun close() {
-        super.close()
-    }
-
-    public override fun init() {
-        super.init()
-    }
-
     companion object {
-        private val guistate: HashMap<String, Any> = EnchantSplitterGuiMenu.guiState
-        private val texture = Identifier(ZwyM.MODID,"textures/screens/enchant_splitter_gui.png")
+        private val texture = ZwyM.id("textures/gui/enchant_splitter_gui.png")
     }
 }

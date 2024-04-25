@@ -32,7 +32,7 @@ class ExampleBlock : ModBlock(Blocks.ENCHANTING_TABLE.settings), BlockEntityProv
 
     override fun getDroppedStacks(state: BlockState, builder: LootContextParameterSet.Builder): List<ItemStack> {
         val dropsOriginal = super.getDroppedStacks(state, builder)
-        if (!dropsOriginal.isEmpty()) return dropsOriginal
+        if (dropsOriginal.isNotEmpty()) return dropsOriginal
         return listOf(ItemStack(this, 1))
     }
 
@@ -58,10 +58,10 @@ class ExampleBlock : ModBlock(Blocks.ENCHANTING_TABLE.settings), BlockEntityProv
         pos: BlockPos
     ): NamedScreenHandlerFactory? {
         val tileEntity = worldIn.getBlockEntity(pos)
-        return if (tileEntity is NamedScreenHandlerFactory) tileEntity else null
+        return tileEntity as? NamedScreenHandlerFactory
     }
 
-    override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity? {
+    override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
         return ExampleBlockEntity(pos, state)
     }
 
