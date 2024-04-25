@@ -17,7 +17,8 @@ object ModItems {
 
     private fun register(item: ModItem): ModItem {
         Registry.register(Registries.ITEM, item.id, item)
-        ZwyM.LOGGER.info("\n{} Item registered", item.translationKey)
+        ZwyM.LOGGER.info("")
+        ZwyM.LOGGER.info("{} Item registered", item.translationKey)
         if (item.itemGroupAddTo != null) addToGroup(item)
 
         return item

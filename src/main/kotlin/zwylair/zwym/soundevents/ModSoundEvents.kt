@@ -15,7 +15,8 @@ object ModSoundEvents {
 
     private fun register(identifier: Identifier): SoundEvent {
         val soundEvent = Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier))
-        ZwyM.LOGGER.info("\n{} SoundEvent registered", identifier.toTranslationKey())
+        ZwyM.LOGGER.info("")
+        ZwyM.LOGGER.info("{} SoundEvent registered", identifier.toTranslationKey())
         return soundEvent
     }
 }

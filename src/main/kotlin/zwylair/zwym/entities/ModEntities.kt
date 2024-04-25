@@ -34,6 +34,7 @@ object ModEntities {
     private fun <T : MobEntity> register(entityType: EntityType<T>, entityAttributes: DefaultAttributeContainer.Builder, id: Identifier) {
         Registry.register(Registries.ENTITY_TYPE, id, entityType)
         FabricDefaultAttributeRegistry.register(entityType, entityAttributes)
-        ZwyM.LOGGER.info("\n{} Entity registered", id)
+        ZwyM.LOGGER.info("")
+        ZwyM.LOGGER.info("{} Entity registered", id)
     }
 }

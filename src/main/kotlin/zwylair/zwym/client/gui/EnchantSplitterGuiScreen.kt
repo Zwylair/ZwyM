@@ -70,7 +70,7 @@ class EnchantSplitterGuiScreen(container: EnchantSplitterGuiMenu, inventory: Pla
     }
 
     companion object {
-        private val guistate: HashMap<String, Any> = EnchantSplitterGuiMenu.guistate
+        private val guistate: HashMap<String, Any> = EnchantSplitterGuiMenu.guiState
         private val texture = Identifier(ZwyM.MODID,"textures/screens/enchant_splitter_gui.png")
     }
 }

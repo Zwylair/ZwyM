@@ -31,6 +31,7 @@ object ModItemGroups {
 
     private fun register(itemGroup: ItemGroup, id: Identifier) {
         Registry.register(Registries.ITEM_GROUP, id, itemGroup)
-        ZwyM.LOGGER.info("\n{} ItemGroup registered", id.toTranslationKey())
+        ZwyM.LOGGER.info("")
+        ZwyM.LOGGER.info("{} ItemGroup registered", id.toTranslationKey())
     }
 }

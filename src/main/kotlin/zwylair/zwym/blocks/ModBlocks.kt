@@ -23,7 +23,8 @@ object ModBlocks {
 
         Registry.register(Registries.BLOCK, block.id, block)
         Registry.register(Registries.ITEM, block.id, blockItem)
-        ZwyM.LOGGER.info("\n{} Block, BlockItem registered", block.translationKey)
+        ZwyM.LOGGER.info("")
+        ZwyM.LOGGER.info("{} Block, BlockItem registered", block.translationKey)
         if (block.itemGroupAddTo != null) addToGroup(blockItem)
 
         return block
